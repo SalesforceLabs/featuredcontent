@@ -1,0 +1,17 @@
+<aura:component access="global">
+    
+    <aura:attribute name="library" type="ContentWorkspace"/>
+    
+    <div class="fullBox" id="{!v.library.Id}" onclick="{!c.openLibrary}">
+        <lightning:card variant="narrow">
+            <aura:set attribute="title">
+            </aura:set>
+            <aura:set attribute="footer">
+                {!v.library.Name}
+            </aura:set>
+            <span class="helper"></span>
+            <img class="docPic" src="{!$Resource.FolderImg}"/>
+        </lightning:card>
+    </div>
+    
+</aura:component>

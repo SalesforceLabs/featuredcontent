@@ -1,0 +1,34 @@
+@media only screen and (max-device-width: 600px) {
+    .THIS.desktop {
+        display: none;
+    }
+    .THIS.mobile {
+        display: grid;
+    }
+}
+
+@media only screen and (min-device-width: 600px) {
+    .THIS.mobile {
+        display: none;
+    }
+}
+
+.THIS .libCol1 {
+    width: 10%;
+}
+
+.THIS .libCol2 {
+    line-height: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 85%;
+}
+
+.THIS .libCol3 {
+    line-height: 24px;
+}
+
+.THIS .point {
+    cursor:pointer;
+}

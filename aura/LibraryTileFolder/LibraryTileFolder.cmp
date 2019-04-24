@@ -1,0 +1,23 @@
+<aura:component access="global">
+    
+    <aura:attribute name="sFold" type="ContentFolder"/>
+    
+    <div class="fullBox" id="{!v.sFold.Id}" onclick="{!c.openFolder}">
+        <lightning:card variant="narrow">
+            <aura:set attribute="title">
+            </aura:set>
+            <aura:set attribute="footer">
+                <div class="titleBox slds-grid" id="{!v.sFold.Id}">
+                    <div>
+                        <lightning:icon iconName="doctype:folder" size="small"/>
+                    </div>
+                    <div class="foldName">
+                        {!v.sFold.Name}
+                    </div>
+                </div>
+            </aura:set>
+            <span class="helper"></span>
+            <lightning:icon class="centerIcon" iconName="doctype:folder" size="large"/>
+        </lightning:card>
+    </div>
+</aura:component>

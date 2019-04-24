@@ -1,0 +1,17 @@
+<design:component label="Featured Libraries">
+    
+    <design:attribute name="cmpLabel" label="Title" description="The header that appears at the top of the Featured Libraries component." default="Featured Libraries"/>
+    <design:attribute name="library1" label="Featured Library 1" description="Record id of the featured library. Find the record id in the Salesforce URL of your library. "/>
+    <design:attribute name="libImg1" label="Library 1 Image URL" description="URL of the image to display on the library tile."/>
+    <design:attribute name="library2" label="Featured Library 2" description="Record id of the featured library. Find the record id in the Salesforce URL of your library. "/>
+    <design:attribute name="libImg2" label="Library 2 Image URL" description="URL of the image to display on the library tile."/>
+    <design:attribute name="library3" label="Featured Library 3" description="Record id of the featured library. Find the record id in the Salesforce URL of your library. "/>
+    <design:attribute name="libImg3" label="Library 3 Image URL" description="URL of the image to display on the library tile."/>
+    <design:attribute name="library4" label="Featured Library 4" description="Record id of the featured library. Find the record id in the Salesforce URL of your library. "/>
+    <design:attribute name="libImg4" label="Library 4 Image URL" description="URL of the image to display on the library tile."/>
+    <design:attribute name="library5" label="Featured Library 5" description="Record id of the featured library. Find the record id in the Salesforce URL of your library. "/>
+    <design:attribute name="libImg5" label="Library 5 Image URL" description="URL of the image to display on the library tile."/>
+    <design:attribute name="libImg6" label="All Libraries Image" description="URL of the image to display on the All Libraries tile."/>
+    <design:attribute name="libraryAll" label="All Libraries Label" default="All Libraries"/>
+     
+</design:component>

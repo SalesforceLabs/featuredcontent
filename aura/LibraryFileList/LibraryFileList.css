@@ -1,0 +1,74 @@
+.THIS .point {
+    cursor: pointer;
+}
+
+.THIS .iconsCol {
+    width: 50px;
+    overflow: visible;
+}
+
+@media (max-width: 600px) {  
+    .THIS .cutForMobile {
+        display: none;
+    }
+    
+    .THIS .iconsCol {
+        width: 115px;
+    }
+}
+
+.THIS .col1 {
+    width: 30px;
+    text-align: center;
+    margin: .2em 0;
+}
+
+.THIS .col2 {
+    margin-left: 4px;
+    width: 100%;
+}
+
+.THIS dl {
+    width: 100%;
+}
+
+.THIS .helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.THIS .img {
+    vertical-align: middle;
+}
+
+.THIS dt {
+    font-size: 16px;
+    line-height: 22px;
+    color: #333333;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 95%;
+}
+
+.THIS dd {
+    font-size: 14px;
+    line-height: 19px;
+    color: #06192e;
+}
+
+@media only screen and (max-device-width: 600px) {
+    .THIS.desktop {
+        display: none;
+    }
+    .THIS.mobile {
+        display: grid;
+    }
+}
+
+@media only screen and (min-device-width: 600px) {
+    .THIS.mobile {
+        display: none;
+    }
+}

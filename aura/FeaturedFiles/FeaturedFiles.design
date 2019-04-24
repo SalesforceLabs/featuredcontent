@@ -1,0 +1,11 @@
+<design:component label="Featured Files">
+    
+    <design:attribute name="cmpLabel" label="Title" description="The header that appears at the top of the Featured Files component." default="Featured Files"/>
+    <design:attribute name="file1" label="Featured File 1" description="Record id of the featured file. Find the record id in the Salesforce URL of your file."/>
+    <design:attribute name="file2" label="Featured File 2" description="Record id of the featured file. Find the record id in the Salesforce URL of your file."/>
+    <design:attribute name="file3" label="Featured File 3" description="Record id of the featured file. Find the record id in the Salesforce URL of your file."/>
+    <design:attribute name="file4" label="Featured File 4" description="Record id of the featured file. Find the record id in the Salesforce URL of your file."/>
+    <design:attribute name="file5" label="Featured File 5" description="Record id of the featured file. Find the record id in the Salesforce URL of your file."/>
+    <design:attribute name="file6" label="Featured File 6" description="Record id of the featured file. Find the record id in the Salesforce URL of your file."/>
+   
+</design:component>

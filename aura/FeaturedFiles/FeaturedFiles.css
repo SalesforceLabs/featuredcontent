@@ -1,0 +1,32 @@
+.THIS#container {
+    height: 270px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.THIS.slds-page-header {
+    background: transparent !important;
+}
+
+.THIS .wrap {
+    margin: 10px;
+    height: 100%;
+    white-space: nowrap;
+}
+
+.THIS h1 {
+    font-family: Work Sans;
+    margin: 0;
+}
+
+.THIS .waiting {
+    top: 50%;  
+}
+
+@media only screen and  (max-width: 600px) {
+    .THIS#container {
+        height: 100%;
+    }
+    
+}

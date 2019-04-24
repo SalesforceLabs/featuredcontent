@@ -1,0 +1,36 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" controller="ContentController" access="global">
+    
+    <aura:attribute name="cmpLabel" type="string" access="global" default="Featured Files"/>
+    <aura:attribute name="file1" type="string" access="global" default=""/>
+    <aura:attribute name="file2" type="string" access="global" default=""/>
+    <aura:attribute name="file3" type="string" access="global" default=""/>
+    <aura:attribute name="file4" type="string" access="global" default=""/>
+    <aura:attribute name="file5" type="string" access="global" default=""/>
+    <aura:attribute name="file6" type="string" access="global" default=""/>
+    <aura:attribute name="docs" type="ContentVersion[]"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="slds-page-header">
+        <div class="slds-media">
+            <div class="slds-media__figure">
+                <lightning:icon iconName="custom:custom43" size="medium"/>
+            </div>
+            <div class="slds-media__body">
+                <h1 class="slds-page-header__title slds-truncate slds-align-middle">{!v.cmpLabel}</h1>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+        <aura:if isTrue="{!v.docs.length == 0}">
+            <lightning:spinner class="waiting slds-is-relative" variant="brand" size="small"/>
+            <aura:set attribute="else">
+                <div class="wrap">
+                    <aura:iteration var="doc" items="{!v.docs}">
+                        <c:FeaturedFileTile doc="{!doc}"/>
+                    </aura:iteration> 
+                </div>
+            </aura:set>
+        </aura:if>
+    </div>
+</aura:component>

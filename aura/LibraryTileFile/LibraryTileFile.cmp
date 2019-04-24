@@ -1,0 +1,60 @@
+<aura:component access="global">
+    
+    <aura:attribute name="theFile" type="ContentVersion"/>
+    
+    <div class="fullBox" onclick="{!c.preview}">
+        <lightning:card variant="narrow">
+            <aura:set attribute="title">
+            </aura:set>
+            <aura:set attribute="footer">
+                <div class="titleBox slds-grid">
+                    <div>
+                        <aura:if isTrue="{!(v.theFile.FileExtension=='doc') || (v.theFile.FileExtension=='docx')}">
+                            <lightning:icon iconName="doctype:word" size="small"/>
+                            <aura:set attribute="else">
+                                <aura:if isTrue="{!(v.theFile.FileExtension=='xls') || v.theFile.FileExtension=='xlsx'}">
+                                    <lightning:icon iconName="doctype:excel" size="small"/>
+                                    <aura:set attribute="else">
+                                        <aura:if isTrue="{!(v.theFile.FileExtension=='pdf')}">
+                                            <lightning:icon iconName="doctype:pdf" size="small"/>
+                                            <aura:set attribute="else">
+                                                <aura:if isTrue="{!(v.theFile.FileExtension=='ppt') || (v.theFile.FileExtension=='pptx')}">
+                                                    <lightning:icon iconName="doctype:ppt" size="small"/>
+                                                    <aura:set attribute="else">
+                                                        <aura:if isTrue="{!(v.theFile.FileExtension=='png') || (v.theFile.FileType=='PNG')|| (v.theFile.FileExtension=='jpg')|| (v.theFile.FileType=='JPG')}">
+                                                            <lightning:icon iconName="doctype:image" size="small"/>
+                                                            <aura:set attribute="else">
+                                                                <aura:if isTrue="{!(v.theFile.FileType =='PACK')}">
+                                                                    <lightning:icon iconName="doctype:pack" size="small"/>
+                                                                    <aura:set attribute="else">
+                                                                        <lightning:icon iconName="doctype:unknown" size="small"/>
+                                                                    </aura:set>
+                                                                </aura:if>
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </aura:set>
+                                                </aura:if>
+                                            </aura:set>
+                                        </aura:if>
+                                    </aura:set>
+                                </aura:if>
+                            </aura:set>
+                        </aura:if>
+                    </div>
+                    <div class="libCol2">
+                        <span class="helper">
+                            <div class='midAlign'>{!v.theFile.Title}</div>
+                        </span>
+                    </div>
+                </div>
+            </aura:set>
+            <span class="helper"></span>
+                <aura:if isTrue="{!v.theFile.FileType =='PACK'}">
+                    <lightning:icon class='centerImg' iconName="doctype:pack" size="large"/>
+                    <aura:set attribute="else">
+                        <img class="docPic" src="{!$SfdcSite.pathPrefix+'/sfc/servlet.shepherd/version/renditionDownload?rendition=THUMB720BY480&amp;operationContext=CHATTER&amp;page=0&amp;versionId='+v.theFile.Id}"/>
+                    </aura:set>
+                </aura:if>
+        </lightning:card>
+    </div>
+</aura:component>

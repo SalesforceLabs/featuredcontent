@@ -1,0 +1,15 @@
+<aura:component access="global">
+    
+    <aura:attribute name="library" type="ContentWorkspace"/>
+    
+    <tr class="desktop">
+        <td class='point' onclick="{!c.openLibrary}">
+            <lightning:icon iconName="doctype:folder " size="medium"/>&nbsp;&nbsp;
+            <ui:outputText value="{!v.library.Name}"/>            
+        </td>
+        <td class="cutForMobile">
+            <ui:outputDate value="{!v.library.LastModifiedDate}"/>            
+        </td>
+    </tr>  
+    
+</aura:component>

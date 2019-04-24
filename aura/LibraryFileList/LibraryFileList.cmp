@@ -1,0 +1,75 @@
+<aura:component controller="ContentController" access="global">
+    
+    <aura:attribute name="contentFile" type="ContentVersion"/>
+    <aura:attribute name="modDate" type="String"/>
+    
+    <tr class="desktop">
+        <td onclick="{!c.preview}" class="point">
+            <aura:if isTrue="{!(v.contentFile.FileExtension=='doc') || (v.contentFile.FileExtension=='docx')}">
+                <lightning:icon iconName="doctype:word" size="medium"/>
+                <aura:set attribute="else">
+                    <aura:if isTrue="{!(v.contentFile.FileExtension=='xls') || v.contentFile.FileExtension=='xlsx'}">
+                        <lightning:icon iconName="doctype:excel" size="medium"/>
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!(v.contentFile.FileExtension=='pdf')}">
+                                <lightning:icon iconName="doctype:pdf" size="medium"/>
+                                <aura:set attribute="else">
+                                    <aura:if isTrue="{!(v.contentFile.FileExtension=='ppt') || (v.contentFile.FileExtension=='pptx')}">
+                                        <lightning:icon iconName="doctype:ppt" size="medium"/>
+                                        <aura:set attribute="else">
+                                            <aura:if isTrue="{!(v.contentFile.FileExtension=='png') || (v.contentFile.FileType=='PNG')|| (v.contentFile.FileExtension=='jpg')|| (v.contentFile.FileType=='JPG')}">
+                                                <lightning:icon iconName="doctype:image" size="small"/>
+                                                <aura:set attribute="else">
+                                                    <aura:if isTrue="{!(v.contentFile.FileType =='PACK')}">
+                                                        <lightning:icon iconName="doctype:pack" size="small"/>
+                                                        <aura:set attribute="else">
+                                                            <lightning:icon iconName="doctype:unknown" size="small"/>
+                                                        </aura:set>
+                                                    </aura:if>
+                                                </aura:set>
+                                            </aura:if>
+                                        </aura:set>
+                                    </aura:if>
+                                </aura:set>
+                            </aura:if>
+                        </aura:set>
+                    </aura:if>
+                </aura:set>
+            </aura:if>&nbsp;&nbsp;
+            <ui:outputText value="{!v.contentFile.Title}"/>            
+        </td>
+        <td class="cutForMobile">
+            <ui:outputDate value="{!v.contentFile.LastModifiedDate}"/> 
+        </td>
+        <td class="iconsCol">
+            <lightning:buttonMenu alternativeText="File Actions" menuAlignment="right" iconSize="x-small" onselect="{!c.openActions}">
+                <lightning:menuItem label="{!$Label.c.Preview}" value="preview"/>
+            </lightning:buttonMenu>
+        </td>
+    </tr> 
+    
+    
+    <li class="slds-item mobile" onclick="{!c.preview}">
+        <div class="slds-grid">
+            <div class="col1">
+                <span class="helper">
+                    <img class="img" src="{!$SfdcSite.pathPrefix+'/sfc/servlet.shepherd/version/renditionDownload?rendition=THUMB720BY480&amp;operationContext=CHATTER&amp;page=0&amp;versionId='+v.contentFile.Id}"/>
+                </span>
+            </div>
+            <div class="col2">
+                <dl>
+                    <dt>{!v.contentFile.Title}</dt>
+                    <dd>
+                        <ul class="slds-list_horizontal slds-has-dividers_left">
+                            <li class="slds-item"><ui:outputDate value="{!v.contentFile.LastModifiedDate}"/></li>
+                            <li class="slds-item"><c:BytesToString componentValue="{!v.contentFile.ContentSize}"/></li>
+                            <li class="slds-item">{!v.contentFile.FileExtension}</li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </li>
+
+
+</aura:component>

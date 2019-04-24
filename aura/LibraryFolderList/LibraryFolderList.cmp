@@ -1,0 +1,29 @@
+<aura:component access="global">
+    
+    <aura:attribute name="sFold" type="ContentFolder"/>
+    
+    <tr class="desktop">
+        <td class='point' onclick="{!c.openFolder}">
+            <lightning:icon iconName="doctype:folder " size="medium"/>&nbsp;&nbsp;
+            <ui:outputText value="{!v.sFold.Name}"/>            
+        </td>
+        <td class="cutForMobile">
+        </td>
+        <td class="iconsCol">
+        </td>
+    </tr>  
+    
+    <li class="slds-item mobile" onclick="{!c.openFolder}">
+        <div class="slds-grid">
+            <div class="libCol1">
+                <lightning:icon iconName="doctype:folder" size="small"/>
+            </div>
+            <div class="libCol2">
+                <span>{!v.sFold.Name}</span>
+            </div>
+            <div class="libCol3">
+                <lightning:icon iconName="utility:right" size="x-small"/>
+            </div>
+        </div>
+    </li>
+</aura:component>

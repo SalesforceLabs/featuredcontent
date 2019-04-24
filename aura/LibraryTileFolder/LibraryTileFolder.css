@@ -1,0 +1,79 @@
+.THIS .centerIcon {
+    width: auto;
+    max-height: 100%;
+    vertical-align: middle;
+}
+
+.THIS .slds-icon_container, .THIS .slds-icon__container {
+    padding-right: .5rem;
+    padding-left: .5rem;
+}
+
+.THIS .foldName {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0.1rem 0;
+}
+
+.THIS.fullBox {
+    width: 32%;
+    height: 250px;
+    display: inline-block;
+    margin: .5%;
+    cursor: pointer;
+}
+
+.THIS.fullBox:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    -webkit-transition: box-shadow .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out;
+}
+
+.THIS .slds-card {
+    height: 100%;
+}
+
+.THIS .slds-card__header {
+     padding: 0;
+     margin: 0; 
+}
+
+.THIS .slds-card__footer {
+    margin-top: 0;
+    padding: .75rem;
+    height: 20%;
+    background: #f9f9fa;
+    text-align: center;
+    color: rgb(2, 24, 144);
+    font-weight: 500;
+}
+
+.THIS .slds-card__body {
+    margin-top: 0;
+    margin-bottom: 0; 
+    height: 80%;
+    text-align: center;
+}
+
+.THIS .docPic {
+    height: 100%;
+    max-width: 100%;
+}
+
+.THIS .userPic {
+    width: 100%;
+}
+
+.THIS .helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+@media (max-width: 600px) {  
+    .THIS.fullBox {
+        width: 97%;
+        margin-bottom: 2%;
+    }
+    
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Translations xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customLabels>
+        <label>Affichage</label>
+        <name>Display_As</name>
+    </customLabels>
+    <customLabels>
+        <label>Dernière Activité</label>
+        <name>Last_Activity</name>
+    </customLabels>
+    <customLabels>
+        <label>Date de Dernière Modification</label>
+        <name>Last_Modified</name>
+    </customLabels>
+    <customLabels>
+        <label>Tableau</label>
+        <name>List</name>
+    </customLabels>
+    <customLabels>
+        <label>Titre</label>
+        <name>Name</name>
+    </customLabels>
+    <customLabels>
+        <label>Aucun élément à afficher.</label>
+        <name>No_Items</name>
+    </customLabels>
+    <customLabels>
+        <label>Prévisionne</label>
+        <name>Preview</name>
+    </customLabels>
+    <customLabels>
+        <label>Vignette</label>
+        <name>Tiles</name>
+    </customLabels>
+</Translations>

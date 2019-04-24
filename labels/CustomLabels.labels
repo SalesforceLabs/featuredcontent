@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Display_As</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Display As</shortDescription>
+        <value>Display As</value>
+    </labels>
+    <labels>
+        <fullName>Last_Activity</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Last Activity</shortDescription>
+        <value>Last Activity</value>
+    </labels>
+    <labels>
+        <fullName>Last_Modified</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Last Modified</shortDescription>
+        <value>Last Modified</value>
+    </labels>
+    <labels>
+        <fullName>List</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>List</shortDescription>
+        <value>List</value>
+    </labels>
+    <labels>
+        <fullName>Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Name</shortDescription>
+        <value>Name</value>
+    </labels>
+    <labels>
+        <fullName>No_Items</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>No Items</shortDescription>
+        <value>No items to display.</value>
+    </labels>
+    <labels>
+        <fullName>Preview</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Preview</shortDescription>
+        <value>Preview</value>
+    </labels>
+    <labels>
+        <fullName>Tiles</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Tiles</shortDescription>
+        <value>Tiles</value>
+    </labels>
+</CustomLabels>

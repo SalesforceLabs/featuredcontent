@@ -1,0 +1,238 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" controller="ContentController" access="global">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="c:openWorkspace" action="{!c.openFromMain}"/>
+    <aura:handler event="c:openSFolder" action="{!c.openSubF}"/> 
+    
+    <aura:attribute name="contentWorkspaces" type="ContentWorkspace[]"/>    
+    <aura:attribute name="contentVersions" type="ContentVersion[]"/>
+    <aura:attribute name="subFolders" type="ContentFolder[]"/>
+    <aura:attribute name="selectedLibraryId" type="ID"/>
+    <aura:attribute name="parentFolderId" type="ID"/>
+    <aura:attribute name="selectedLibraryName" type="String"/>
+    <aura:attribute name="currentWorkspaceName" type="String"/>
+    <aura:attribute name="myBreadcrumbs" type="Object"/>
+    <aura:attribute name="isTile" type="Boolean" default="true"/>
+    <aura:attribute name="libraryArray" type="string[]" access="global" default=""/>
+    
+    <aura:attribute name="cmpLabel" type="string" access="global" default="Featured Libraries"/>
+    <aura:attribute name="library1" type="string" access="global" default=""/>
+    <aura:attribute name="library2" type="string" access="global" default=""/>
+    <aura:attribute name="library3" type="string" access="global" default=""/>
+    <aura:attribute name="library4" type="string" access="global" default=""/>
+    <aura:attribute name="library5" type="string" access="global" default=""/>
+    <aura:attribute name="libraryAll" type="string" access="global" default="All Libraries"/>
+    <aura:attribute name="libImg1" type="string" access="global"/>
+    <aura:attribute name="libImg2" type="string" access="global"/>
+    <aura:attribute name="libImg3" type="string" access="global"/>
+    <aura:attribute name="libImg4" type="string" access="global"/>
+    <aura:attribute name="libImg5" type="string" access="global"/>
+    <aura:attribute name="libImg6" type="string" access="global"/>
+    
+  <!--  <c:AllLibrariesTile allLibName="{!v.libraryAll}" allLibImg="{!v.libImg6}" />-->
+    
+    <body>
+        <div id="container">
+            <div id="main" class="slds-is-relative">  
+                <lightning:spinner aura:id="mySpinner" class="waiting slds-hide" variant="brand" size="small"/>
+                <!--Header-->
+                <div class="slds-page-header">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <lightning:icon iconName="standard:folder" size="medium"/>
+                        </div>
+                        <div class="slds-media__body">
+                            <lightning:breadcrumbs class="breadWrap">
+                                <aura:iteration items="{!v.myBreadcrumbs}" var="crumbs">
+                                    <lightning:breadcrumb label="{!crumbs.label}" onclick="{!c.navigateTo}" name="{!crumbs.name}" class="breads"/>
+                                </aura:iteration>
+                            </lightning:breadcrumbs>
+                        </div>
+                        <div aura:id="viewPop">
+                            <aura:if isTrue="{!v.isTile}">
+                                <lightning:buttonMenu iconName="utility:tile_card_list" alternativeText="List View" menuAlignment="right" onselect="{!c.toggleView}">
+                                    <lightning:menuItem label="{!$Label.c.Display_As}" value="Display as" disabled="true" class="displayAs"/>
+                                    <lightning:menuItem label="{!$Label.c.List}" value="table" checked="false" iconName="utility:table"/>
+                                    <lightning:menuItem label="{!$Label.c.Tiles}" value="tile" checked="true" iconName="utility:tile_card_list"/>
+                                </lightning:buttonMenu>
+                                <aura:set attribute="else">
+                                    <lightning:buttonMenu iconName="utility:table" alternativeText="List View" menuAlignment="right" onselect="{!c.toggleView}">
+                                        <lightning:menuItem label="{!$Label.c.Display_As}" value="Display as" disabled="true" class="displayAs"/>
+                                        <lightning:menuItem label="{!$Label.c.List}" value="table" checked="true" iconName="utility:table"/>
+                                        <lightning:menuItem label="{!$Label.c.Tiles}" value="tile" checked="false" iconName="utility:tile_card_list"/>
+                                    </lightning:buttonMenu>
+                                </aura:set>
+                            </aura:if>
+                        </div>
+                    </div>
+                </div>
+                <!--Featured Libraries-->	
+                <div aura:id="libTiles" id="libraryTiles">
+                    <div class="wrap">
+                        <aura:iteration items="{!v.libraryArray}" var="library">
+                            <span>
+                                <c:MainLibrary lib="{!library}"/>
+                            </span>
+                        </aura:iteration>
+                        <div class="fullBox" onclick="{!c.libraryList}">
+                            <lightning:card variant="narrow">     
+                                <aura:set attribute="title">
+                                </aura:set>
+                                <aura:set attribute="footer">
+                                    {!v.libraryAll}
+                                </aura:set>
+                                <span class="helper"></span>
+                                <aura:if isTrue="{!v.libImg6 == ''}">
+                                    <img class="docPic" src="{!$Resource.FolderImg}"/>  
+                                    <aura:set attribute="else">
+                                        <img class="libPic" src="{!v.libImg6}" />  
+                                    </aura:set>
+                                </aura:if>
+                            </lightning:card>
+                        </div>
+                    </div>
+                </div>
+                <!--All Libraries-->
+                <div aura:id="allLibs" id="fullLibrary" class="viewOpen">
+                    <aura:if isTrue="{!v.isTile}">
+                        <div aura:id="fileGrid">
+                            <div class="wrap">
+                                <aura:iteration var="libFolder" items="{!v.contentWorkspaces}">
+                                    <span>
+                                        <c:LibraryTileAll library="{!libFolder}"/>
+                                    </span>
+                                </aura:iteration>
+                            </div>
+                        </div>
+                        <aura:set attribute="else">
+                            <div aura:id="fileList" class="tableView">
+                                <table class="slds-table slds-table--fixed-layout tableFull">
+                                    <thead>
+                                        <tr class="slds-text-title--caps">
+                                            <th scope="col">
+                                                <div class="slds-truncate" title="Name">{!$Label.c.Name}</div>
+                                            </th>
+                                            <th scope="col" class="cutForMobile">
+                                                <div class="slds-truncate " title="Last Activity">{!$Label.c.Last_Activity}</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <div class="slds-scrollable--y tabBody">
+                                    <table class="slds-table slds-table--bordered slds-table_resizable-cols slds-table_fixed-layout tableFull" role="grid">
+                                        <tbody>
+                                            <aura:iteration var="libFolder" items="{!v.contentWorkspaces}">
+                                                <c:LibraryListAll library="{!libFolder}"/>
+                                            </aura:iteration>    
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </aura:set>
+                    </aura:if>
+                </div>
+                <!--Library Content-->
+                <div aura:id="libFiles" id="fileTiles" class="viewOpen">
+                    <aura:if isTrue="{!or(v.subFolders.length > 0,v.contentVersions.length > 0)}">
+                        <aura:if isTrue="{!v.isTile}">
+                            <div aura:id="fileGrid">
+                                <div class="wrap">
+                                    <aura:iteration var="subFolder" items="{!v.subFolders}">
+                                        <span>
+                                            <c:LibraryTileFolder sFold="{!subFolder}"/>
+                                        </span>
+                                    </aura:iteration>
+                                    <aura:iteration var="contentVersion" items="{!v.contentVersions}">
+                                        <span>
+                                            <c:LibraryTileFile theFile="{!contentVersion}"/>
+                                        </span>
+                                    </aura:iteration>
+                                </div>
+                            </div>
+                            <aura:set attribute="else">
+                                <div aura:id="fileList" class="tableView">
+                                    <table class="slds-table slds-table--fixed-layout tableFull">
+                                        <thead>
+                                            <tr class="slds-text-title--caps">
+                                                <th scope="col">
+                                                    <div class="slds-truncate" title="Name">{!$Label.c.Name}</div>
+                                                </th>
+                                                <th scope="col" class="cutForMobile">
+                                                    <div class="slds-truncate " title="Author">{!$Label.c.Last_Modified}</div>
+                                                </th>
+                                                <th scope="col" class='iconsCol'>
+                                                    <div class="slds-truncate" title="Actions"></div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <div class="slds-scrollable--y tabBody">
+                                        <table class="slds-table slds-table--bordered slds-table_resizable-cols slds-table_fixed-layout tableFull" role="grid">
+                                            <tbody>
+                                                <aura:iteration var="subFolder" items="{!v.subFolders}">
+                                                    <c:LibraryFolderList sFold="{!subFolder}"/>
+                                                </aura:iteration>  
+                                                <aura:iteration var="file" items="{!v.contentVersions}">
+                                                    <c:LibraryFileList contentFile="{!file}"/>
+                                                </aura:iteration>    
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </aura:set>
+                        </aura:if>
+                        <aura:set attribute="else">
+                            <div id="noMessage">
+                                {!$Label.c.No_Items}
+                            </div>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </div>
+            <div id="mobile" class="slds-is-relative">
+                <lightning:spinner aura:id="mySpinnerMob" class="slds-hide" variant="brand" size="small"/>
+                <div class="slds-page-header">
+                    <div class="slds-media">
+                        <div class="slds-media__body">
+                            <h1 class="slds-page-header__title slds-truncate slds-align-middle">{!v.cmpLabel}</h1>
+                        </div>
+                    </div>
+                </div>
+                <div aura:id="libListMobile" class="slds-scrollable--y">
+                    <ul class="slds-has-dividers_bottom-space">
+                        <aura:iteration items="{!v.libraryArray}" var="library">
+                            <c:MainLibrary lib="{!library}"/>
+                        </aura:iteration>
+                    </ul>
+                </div>
+                <div aura:id="fileListMobile" class="viewOpen">
+                    <div class="slds-grid parentFolder">
+                        <div class="slds-col libCol1" onclick="{!c.navBack}">
+                            <lightning:icon class="iconRight" iconName="utility:left" size="x-small"/>
+                            <span>Back</span>
+                        </div>
+                        <div class="slds-col rightThisLib">
+                            <lightning:icon class="iconRight" iconName="doctype:folder" size="small"/>
+                            <span>{!v.selectedLibraryName}</span>
+                        </div>
+                    </div>
+                    <aura:if isTrue="{!or(v.subFolders.length > 0,v.contentVersions.length > 0)}">
+                        <ul class="slds-has-dividers_bottom-space">
+                            <aura:iteration var="subFolder" items="{!v.subFolders}">
+                                <c:LibraryFolderList sFold="{!subFolder}"/>
+                            </aura:iteration> 
+                            <aura:iteration var="file" items="{!v.contentVersions}">
+                                <c:LibraryFileList contentFile="{!file}"/>
+                            </aura:iteration>    
+                        </ul>
+                        <aura:set attribute="else">
+                            <div id="noMessageMobile">
+                                {!$Label.c.No_Items}
+                            </div>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </div>       
+        </div>
+    </body>
+</aura:component>

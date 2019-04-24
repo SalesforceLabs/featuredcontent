@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION">
+	<aura:attribute name="contFolderId" type="Id"/>
+    <aura:attribute name="libName" type="String"/>
+</aura:event>

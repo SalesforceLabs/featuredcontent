@@ -1,0 +1,5 @@
+<aura:event type="APPLICATION" access="global">
+    <aura:attribute name="contFolderId" type="Id"/>
+    <aura:attribute name="libName" type="String"/>
+    <aura:attribute name="isSub" type="Boolean"/>
+</aura:event>

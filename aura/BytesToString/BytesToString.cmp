@@ -1,0 +1,9 @@
+<aura:component controller="ContentController">
+
+    <aura:attribute name="componentValue" type="Integer"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    {!v.componentValue}
+
+</aura:component>

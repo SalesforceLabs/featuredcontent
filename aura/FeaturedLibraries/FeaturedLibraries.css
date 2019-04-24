@@ -1,0 +1,303 @@
+.THIS .fullBox {
+    width: 32%;
+    height: 250px;
+    display: inline-block;
+    margin: .5%;
+    cursor: pointer;
+}
+
+.THIS .fullBox:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    -webkit-transition: box-shadow .2s ease-in-out;
+    transition: box-shadow .2s ease-in-out;
+}
+
+.THIS .slds-card {
+    height: 100%;
+}
+
+.THIS .slds-card__header {
+     padding: 0;
+     margin: 0; 
+}
+
+.THIS .slds-card__footer {
+    margin-top: 0;
+    padding: .75rem;
+    height: 20%;
+    background: #f9f9fa;
+    text-align: center;
+    color: rgb(2, 24, 144);
+    font-weight: 600;
+}
+
+.THIS .slds-card__body {
+    margin-top: 0;
+    margin-bottom: 0; 
+    height: 80%;
+    text-align: center;
+}
+
+.THIS .docPic {
+    height: 100%;
+    max-width: 100%;
+}
+
+.THIS .libPic {
+    height: 100%;
+    width: 100%;
+}
+
+.THIS .userPic {
+    width: 100%;
+}
+
+.THIS .helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+
+
+.THIS #container {
+    height:100%;
+    min-height:650px;
+}
+
+.THIS .tabBody {
+    max-height: 500px !important;
+} 
+
+.THIS .displayAs {
+    text-transform: uppercase;
+}
+
+.THIS .imageArea {
+    width: 31.3%;
+    display: inline-block;
+    border: 1px solid;
+    margin: 1%;
+    height: 150px;
+}
+
+.THIS #libraryHeader {
+    height: 50px;
+    border-bottom: 1px solid #AAAAAA;
+    margin: 1%;
+}
+
+.THIS #header {
+    float: left;
+    font-size: 18px;
+}
+
+.THIS .slds-icon-standard-topic {
+    background-color: #7f93f9;
+}
+
+.THIS .slds-icon-standard-folder {
+    background-color: #7f93f9;
+}
+
+.THIS .slds-page-header {
+    background: transparent;
+}
+
+.THIS .libTitle {
+    height: 20.5%;
+    text-align: center;
+    padding-top: 4px;
+    background-color: red;
+    color: #fff;
+}
+
+.THIS .viewOpen {
+    display: none;
+}
+
+.THIS .libImg {
+    height: 80%;
+}
+
+.THIS #main {
+    float: left;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+}
+
+.THIS h1 {
+    margin: 0;
+}
+
+.THIS body {
+    margin: 0;
+    padding: 0;
+    background: #EEE;
+    font: 10px/13px 'Lucida Sans',sans-serif;
+}
+.THIS .wrap {
+    overflow: auto;
+    max-height: 575px;
+    margin: 10px;
+}
+
+
+.THIS .center {
+    text-align: center;
+    font-weight: 600;
+}
+
+.THIS body.no-touch .boxInner:hover .titleBox, .THIS body.touch .boxInner.touchFocus .titleBox {
+    margin-bottom: 0;
+}
+
+.THIS .col1 {
+    width: 55px;
+}
+
+.THIS .slds-table {
+    background: #fff;
+}
+
+.THIS thead {
+    background-color: #fff !important;
+}
+
+.THIS table.slds-table.slds-table--fixed-layout {
+    border: none;
+}
+
+.THIS .iconsCol {
+    width: 50px;
+}
+
+.THIS .tableView {
+    height: 100%;
+}
+
+.THIS .tabBody {
+    height: 100%;
+    min-height: 500px;
+}
+
+@media (max-width: 1000px) {
+    .THIS #main {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .THIS .box {
+        width: 100%;
+        padding-bottom: 70%;
+    }
+    
+    .THIS .wrap {
+         max-height: 100%; 
+    }
+    
+    .THIS .cutForMobile {
+        display: none;
+    }
+    
+    .THIS .iconsCol {
+        width: 115px;
+    }
+}
+
+.THIS #noMessageMobile {
+    text-align: center;
+    margin: 10% 0;
+}
+
+@media only screen and (max-device-width: 600px) {
+    .THIS #main {
+        display: none;
+    }
+    .THIS #mobile {
+        display: block !important;
+        height: 100%;
+    }
+}
+
+@media only screen and (min-device-width: 600px) {
+    .THIS #mobile {
+        display: none;
+    }
+}
+
+.THIS .mobRow1 {
+    margin-right: 15px;
+}
+
+.THIS .mobRow2 {
+    float: right;
+    margin-right: 10px;
+}
+
+.THIS td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.THIS .viewClosed {
+	display: none;
+}
+
+.THIS .waiting {
+    top: 65px; 
+}
+
+.THIS .closeThis {
+    display: none;
+}
+
+.THIS .parentFolder {
+    margin: 10px 1px 10px 1px;
+}
+
+.THIS .leftSide {
+    float: left;
+}
+
+.THIS .rightSide {
+    float: right;
+}
+
+.THIS .iconRight {
+    margin-right: 8px;
+}
+
+.THIS .rightThisLib {
+    text-align: right;
+}
+
+.THIS #noMessage {
+    margin: 6%;
+    text-align: center;
+}
+
+.THIS .breads {
+    font-size: 20px;
+    text-transform: capitalize;
+    color: #000;
+    text-decoration: none;
+    font-family: Work Sans;
+    letter-spacing: 0;
+}
+
+.THIS .breads a {
+    color: #000;   
+}
+
+.THIS .breadWrap ol {
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.THIS .tableFull {
+    width: 100%;
+}

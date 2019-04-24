@@ -1,0 +1,36 @@
+<aura:component access="global">
+    
+    <aura:attribute name="lib" type="string[]"/>
+    
+    <div class="fullBox" onclick="{!c.openLibrary}">
+        <lightning:card variant="narrow">
+            <aura:set attribute="title">
+            </aura:set>
+            <aura:set attribute="footer">
+                {!v.lib[0].Name}
+            </aura:set>
+            <span class="helper"></span>
+            <aura:if isTrue="{!v.lib[1] == ''}">
+                <img class="docPic" src="{!$Resource.FolderImg}"/>  
+                <aura:set attribute="else">
+                    <img class="docPic userPic" src="{!v.lib[1]}"/>  
+                </aura:set>
+            </aura:if>
+        </lightning:card>
+    </div>
+    
+    <li class="slds-item mobile" onclick="{!c.openLibrary}">
+        <div class="slds-grid">
+            <div class="libCol1">
+                <lightning:icon iconName="doctype:folder" size="small"/>
+            </div>
+            <div class="libCol2">
+                <span>{!v.lib[0].Name}</span>
+            </div>
+            <div class="libCol3">
+                <lightning:icon iconName="utility:right" size="x-small"/>
+            </div>
+        </div>
+    </li>
+ 
+</aura:component>
